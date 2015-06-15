@@ -1,0 +1,135 @@
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tata.Link</title>
+</head>
+
+<body>
+   <div class="container">
+      {{> intro}}
+      {{> howItWorks}}
+      <hr>
+      {{> shareButtons}}
+      <hr>
+      {{> score}}
+      {{> stats}}
+      <hr>
+      {{> buttons}}
+      <hr>
+      {{> footer}}
+   </div>
+</body>
+
+<!-- INTRO -->
+<template name="intro">
+   <h1 class="text-center" style="font-size: 50px;">Tata.Link</h1>
+   <h2 class="text-center">La primera herramienta especialmente dise&ntilde;ada para ayudarlo al Tata en la toma de decisiones.</h2>
+   <img class="img-center" src="/tata3.jpg" width="100%">
+</template>
+
+<!-- SHARE BUTTONS -->
+<template name="shareButtons">
+   <div class="shareButtons">
+      <h2>Compartirlo es un deber Patrio!</h2>
+      {{> shareit title="Tata.Link la linea directa con el Tata"}}
+   </div>
+</template>
+
+<!-- HOW WORKS -->
+<template name="howItWorks">
+   <div class="howItWorks">
+      <h2 class="text-center">C&oacute;mo funciona el Tata.Link?</h2>
+      Antes de cada partido de la selecci&oacute;n ponemos todos los contadores en cero.
+      Cuando ves que la pelotita empieza a rodar, que vamos ganando 2-0, que cada
+      contra del equipo contrario es medio gol, y que el Tata pone a calentar a Carlitos
+      y al Pipita cuando en realidad lo necesitamos son m&aacute;s volantes...
+      Ese es el momento de hacer un acto patri&oacute;tico y meterte en el 'Tata.Link':
+      la primera herramienta especialmente dise&ntilde;ada para ayudarlo al Tata en la toma de decisiones.
+      Desde la secci&oacute;n 'AYUDALO AL TATA' le podes sugerir cambios: 'a qui&eacute;n sacar' y 'a qui&eacute;n poner'.
+      Por otro lado, en la secci&oacute;n 'ESTADISTICAS', vas a ver en tiempo real la opini&oacute;n de los
+      42 millones de argentinos que estamos siguiendo el partido. TATA, NO VAMOS A PARAR
+      HASTA NO VERTE CHECKEAR EL TATA.LINK CADA 5'!
+   </div>
+</template>
+
+<!-- SCORE -->
+<template name="score">
+   <div class="score">
+      <table>
+         <tr>
+            {{#hiddenXs}}
+               <th>ARGENTINA</th>
+               <th>URUGUAY</th>
+            {{/hiddenXs}}
+            {{#visibleXs}}
+               <th>ARG.</th>
+               <th>URU.</th>
+            {{/visibleXs}}
+         </tr>
+         <tr>
+            <td>0</td>
+            <td>0</td>
+         </tr>
+      </table>
+   </div>
+</template>
+
+<!-- STATS -->
+<template name="stats">
+   <div class="stats">
+      <h2 class="/*text-center*/">ESTADISTICAS</h2>
+      <div class="row">
+         <div class="col-xs-6">
+            <h3>Sacalo a ({{totalGoingOutVotes}} votos):</h3>
+            <table>
+               {{#each statsGoingOut}}
+                  <tr><td>{{{this.name}}}: {{this.percentage}}%</td></tr>
+               {{/each}}
+            </table>
+         </div>
+         <div class="col-xs-6">
+            <h3>Ponelo a ({{totalGoingInVotes}} votos):</h3>
+            <table>
+               {{#each statsGoingIn}}
+                  <tr><td>{{{this.name}}}: {{this.percentage}}%</td></tr>
+               {{/each}}
+            </table>
+         </div>
+      </div>
+   </div>
+</template>
+
+<!-- BUTTONS -->
+<template name="buttons">
+   <div class="buttons">
+      <h2 class="/*text-center*/">AYUDALO AL TATA</h2>
+      <div class="row">
+         <div class="col-xs-6">
+            <h3>Sacalo a:</h3>
+            <table>
+               {{#each playersGoingOut}}
+                  <tr><td><button type="button" id="{{this._id}}" class="btn btn-default goingOut {{this.selected}}">{{{this.name}}}</button></td></tr>
+               {{/each}}
+            </table>
+         </div>
+         <div class="col-xs-6">
+            <h3>Ponelo a:</h3>
+            <table>
+               {{#each playersGoingIn}}
+                  <tr><td><button type="button" id="{{this._id}}" class="btn btn-default goingIn {{this.selected}}">{{{this.name}}}</button></td></tr>
+               {{/each}}
+            </table>
+         </div>
+      </div>
+   </div>
+</template>
+
+<!-- FOOTER -->
+<template name="footer">
+   <footer class="text-center">
+      el Tata.Link es una herramienta hecha por y para el pueblo Argentino.
+      <br>
+      <a href="https://twitter.com/eltatalink" target="_blank" type="button" class="btn btn-info btn-lg"><i class="fa fa-twitter"></i> @eltatalink</a>
+      <a href="https://www.facebook.com/eltatalink" target="_blank" type="button" class="btn btn-primary btn-lg"><i class="fa fa-facebook"></i> facebook/eltatalink</a>
+      <a href="https://www.twitter/eltatalink" target="_blank" type="button" class="btn githubBtn btn-lg"><i class="fa fa-github"></i> repo</a>
+   </footer>
+</template>
